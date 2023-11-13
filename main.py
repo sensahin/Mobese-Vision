@@ -21,7 +21,6 @@ op.add_argument("user-agent=Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (
 op.add_argument('headless')
 driver = webdriver.Chrome(options=op)
 driver.get(fullurl)
-print("Page loaded")
 time.sleep(5)
 
 # Take a screenshot and save it in the current directory
@@ -39,8 +38,6 @@ pre_signed_url = s3_client.generate_presigned_url('get_object',
                                                   ExpiresIn=60)
 s3_image_url = f'https://{s3_bucket_name}.s3.amazonaws.com/{screenshot_filename}'
 
-# print out the URL of the image
-print(s3_image_url)
 
 # Analyze the image using OpenAI's GPT-Vision
 response = client.chat.completions.create(
